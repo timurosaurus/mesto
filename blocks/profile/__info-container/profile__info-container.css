@@ -1,0 +1,32 @@
+.profile__info-container {
+  display: flex;
+  flex-direction: column;
+  margin: 26px auto 36px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*500px break-point*/
+
+@media screen and (min-width: 500px) {
+  .profile__info-container {
+    flex-direction: row;
+  }
+}
+
+/*900px break-point*/
+
+@media screen and (min-width: 900px) {
+  .profile__info-container {
+    margin: 32px auto 30px;
+  }
+}
+
+/*1024px and higher break-point*/
+
+@media screen and (min-width: 1024px) {
+  .profile__info-container {
+    margin: 30px 244px 25px 22px ;
+  }
+}
+
