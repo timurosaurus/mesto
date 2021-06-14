@@ -11,8 +11,8 @@ popupOpenButtonElement.addEventListener('click', togglePopupVisibility);
 popupCloseButtonElement.addEventListener('click', togglePopupVisibility);
 
 
-const userName = document.querySelector('.profile__user-name');
-const userBio = document.querySelector('.profile__user-description');
+let userName = document.querySelector('.profile__user-name');
+let userBio = document.querySelector('.profile__user-description');
 let formElement = document.querySelector('.form');
 let nameInput = formElement.querySelector('.form__input_name');
 let jobInput = formElement.querySelector('.form__input_bio');
@@ -20,9 +20,8 @@ let jobInput = formElement.querySelector('.form__input_bio');
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  nameInput.textContent = userName.value;
-  jobInput.textContent = userBio.value;
-
+  userName.textContent = nameInput.value;
+  userBio.textContent = jobInput.value;
   togglePopupVisibility();
 }
 
