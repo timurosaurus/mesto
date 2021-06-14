@@ -1,0 +1,13 @@
+.profile__add-btn-element {
+  width: 16px;
+  height: 16px;
+}
+
+/*tablet and desktop resolutions*/
+
+@media screen and (min-width: 586px) {
+  .profile__add-btn-element {
+    width: 22px;
+    height: 22px;
+  }
+}

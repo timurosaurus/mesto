@@ -21,25 +21,84 @@
         <div class="profile__info-container">
           <div class="profile__name-container">
             <h1 class="profile__user-name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-btn"></button>
+            <button type="button" class="profile__edit-btn"></button>
           </div>
           <p class="profile__user-description">Исследователь океана</p>
         </div>
-        <button class="profile__add-btn"></button>
+        <button type="button" class="profile__add-btn"><img class=profile__add-btn-element src="./images/Add-Button.svg"
+            alt="кнопка"></button>
       </section>
 
       <section class="elements">
-
+        <ul class="cards">
+          <li class="card">
+            <img src="./images/places/karach.jpg" alt="Замок" class="card__image">
+            <div class="card__info">
+              <h2 class="card__title">Карачаевск</h2>
+              <button type="button" class="card__button"></button>
+            </div>
+          </li>
+          <li class="card"><img src="./images/places/kamchatka-vulkan-vachkazhets-sWT9Lm98WaE-unsplash.jpg"
+              alt="Вулкан Вачкажец" class="card__image">
+            <div class="card__info">
+              <h2 class="card__title">Вулкан Вачкажец</h2>
+              <button type="button" class="card__button"></button>
+            </div>
+          </li>
+          <li class="card"><img src="./images/places/elbrus.jpg" alt="Гора Эльбрус" class="card__image">
+            <div class="card__info">
+              <h2 class="card__title">Гора Эльбрус</h2>
+              <button type="button" class="card__button"></button>
+            </div>
+          </li>
+          <li class="card"><img src="./images/places/baikal.jpg" alt="Фото зимнего Байкала" class="card__image">
+            <div class="card__info">
+              <h2 class="card__title">Байкал</h2>
+              <button type="button" class="card__button"></button>
+            </div>
+          </li>
+          <li class="card"><img src="./images/places/dagestan-w20NHoXqjUg-unsplash.jpg" alt="Дагестан"
+              class="card__image">
+            <div class="card__info">
+              <h2 class="card__title">Дагестан</h2>
+              <button type="button" class="card__button"></button>
+            </div>
+          </li>
+          <li class="card"><img src="./images/places/dombay.jpg" alt="Домбай" class="card__image">
+            <div class="card__info">
+              <h2 class="card__title">Домбай</h2>
+              <button type="button" class="card__button"></button>
+            </div>
+          </li>
+        </ul>
       </section>
-
 
     </main>
     <!--Footer-->
     <footer class="footer">
-
+      <p class="footer__info">
+        &copy; 2021 Mesto Russia
+      </p>
     </footer>
+
+    <div class="popup popup_closed">
+      <div class="popup__box">
+        <button type="button" class="popup__close-btn">
+          <img src="./images/popup__close-btn-icon.svg" alt="крестик" class="popup__close-btn-icon">
+        </button>
+        <form class="form">
+          <h3 class="form__title">Редактировать профиль</h3>
+          <input type="text" class="form__name" name="name" placeholder="Имя">
+          <input type="text" class="form__bio" name="bio" placeholder="Био">
+        </form>
+        <button type="submit" class="popup__save-btn">Сохранить</button>
+      </div>
+
+    </div>
 
   </div>
 </body>
+
+
 
 </html>

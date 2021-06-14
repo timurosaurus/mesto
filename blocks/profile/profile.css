@@ -12,6 +12,7 @@
 @media screen and (min-width: 500px) {
   .profile {
     flex-direction: row;
+    align-items: flex-start;
   }
 }
 
@@ -19,7 +20,7 @@
 
 @media screen and (min-width: 900px) {
   .profile {
-    margin: 41px 72px 40px;
+    margin: 33px 72px 40px;
   }
 }
 
@@ -27,6 +28,6 @@
 
 @media screen and (min-width: 1024px) {
   .profile {
-    margin: 40px auto 51px;
+    margin: 40px auto 47px;
   }
 }

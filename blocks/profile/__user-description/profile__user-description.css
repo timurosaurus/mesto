@@ -1,0 +1,20 @@
+.profile__user-description {
+  margin: 6px auto 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+/*768px and higher break-points*/
+
+@media screen and (min-width: 768px) {
+  .profile__user-description {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 6px 0 0;
+    text-align: left;
+    align-self: flex-start;
+  }
+}
