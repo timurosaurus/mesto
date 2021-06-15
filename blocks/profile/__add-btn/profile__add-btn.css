@@ -16,8 +16,16 @@
 
 @media screen and (min-width: 500px) {
   .profile__add-btn {
-    width: 150px;
+    width: 100px;
     height: 50px;
     margin: 35px 0 35px;
+  }
+}
+
+/*600px break-point*/
+
+@media screen and (min-width: 600px) {
+  .profile__add-btn {
+    width: 150px;
   }
 }

@@ -5,6 +5,9 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /*768px and higher break-points*/
