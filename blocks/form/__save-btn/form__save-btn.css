@@ -12,6 +12,7 @@
   line-height: 17px;
   text-align: center;
   cursor: pointer;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .form__save-btn:hover {

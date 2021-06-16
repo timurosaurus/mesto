@@ -10,6 +10,7 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .form__input:last-of-type {

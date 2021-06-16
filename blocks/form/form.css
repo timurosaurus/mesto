@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   width: 282px;
+
 }
 
 @media screen and (min-width: 768px) {
