@@ -7,9 +7,9 @@
   max-width: 880px;
 }
 
-/*500px break-point*/
+/*560px break-point*/
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 560px) {
   .profile {
     flex-direction: row;
     align-items: flex-start;
