@@ -1,12 +1,18 @@
 .popup__close-btn {
+  background-image: url(../../../images/popup__close-btn-icon.svg);
   width: 26px;
   height: 26px;
-  background: none;
   border: none;
-  position: relative;
+  /*position: relative;
   margin: 0 -1px 13px auto;
+  background: none;*/
   padding: 0;
   cursor: pointer;
+  position: absolute;
+  background-position: center;
+  top: -40px;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .popup__close-btn:hover {
@@ -17,6 +23,7 @@
   .popup__close-btn {
     width: 40px;
     height: 40px;
-    margin: 0 -40px -8px auto;
+    /*margin: 0 -40px -8px auto;*/
+    right: -40px;
   }
 }

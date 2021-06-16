@@ -17,7 +17,7 @@
     <main>
 
       <section class="profile">
-        <img src="./images/profile-pic.jpg" alt="Жак-Ив Кусто" class="profile__user-pic">
+        <img src="./images/profile-pic.jpg" alt="Аватар пользователя" class="profile__user-pic">
         <div class="profile__info-container">
           <div class="profile__name-container">
             <h1 class="profile__user-name">Жак-Ив Кусто</h1>
@@ -83,23 +83,21 @@
 
     <div class="popup">
       <div class="popup__box">
-        <button type="button" class="popup__close-btn">
-          <img src="./images/popup__close-btn-icon.svg" alt="крестик" class="popup__close-btn-icon">
-        </button>
-        <form class="form">
+        <button type="button" class="popup__close-btn"></button>
+        <form class="form" name="Форма">
           <h3 class="form__title">Редактировать профиль</h3>
-          <input type="text" class="form__input form__input_name" name="name" placeholder="" value="Жак-Ив Кусто">
-          <input type="text" class="form__input form__input_bio" name="bio" placeholder="" value="Исследователь океана">
+          <input type="text" class="form__input form__input_place_name" name="name" placeholder="" value="Ваше имя">
+          <input type="text" class="form__input form__input_place_bio" name="bio" placeholder="" value="Ваша профессия">
           <button type="submit" class="form__save-btn">Сохранить</button>
         </form>
-
       </div>
 
-      <!--Scripts-->
-      <script src="./scripts/index.js"></script>
     </div>
 
   </div>
+
+  <!--Scripts-->
+  <script src="./scripts/index.js"></script>
 </body>
 
 
