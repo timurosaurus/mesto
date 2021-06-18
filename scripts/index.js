@@ -10,6 +10,9 @@ let jobInput = formElement.querySelector('.form__input_place_bio');
 
 //function for opening the popup//
 function openPopup() {
+  nameInput.value = userName.textContent;
+  jobInput.value = userBio.textContent;
+
   popupElement.classList.add('popup_opened')
 }
 
@@ -26,6 +29,7 @@ function submitForm(evt) {
   //openPopup();//
   closePopup();
 }
+
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 formElement.addEventListener('submit', submitForm);
