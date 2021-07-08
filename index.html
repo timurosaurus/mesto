@@ -41,7 +41,7 @@
       </p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_function_edit">
       <div class="popup__box">
         <button type="button" class="popup__close-btn"></button>
         <form class="form" name="form">
@@ -51,11 +51,11 @@
           <button type="submit" class="form__save-btn">Сохранить</button>
         </form>
       </div>
-
     </div>
 
     <template id="card">
         <li class="card">
+          <button class="card__delete-btn"></button>
           <img alt="" class="card__image">
           <div class="card__info">
             <h2 class="card__title"></h2>
@@ -64,10 +64,26 @@
         </li>
     </template>
 
+    <div class="popup popup_function_add">
+      <div class="popup__box">
+        <button type="button" class="popup__close-btn"></button>
+        <form class="form" name="form">
+          <h3 class="form__title">Новое место</h3>
+          <input type="text" class="form__input form__input_place_new-place-name" name="new-place-name" placeholder="Название" value="">
+          <input type="url" class="form__input form__input_place_link" name="link" placeholder="Ссылка на картинку" value="">
+          <button type="submit" class="form__save-btn">Создать</button>
+        </form>
+      </div>
+    </div>
+
+
+
   </div>
 
   <!--Scripts-->
   <script src="./scripts/index.js"></script>
+  <!--<script src="./scripts/initial-cards.js"></script>
+  <script src="./scripts/card.js"></script>-->
 </body>
 
 

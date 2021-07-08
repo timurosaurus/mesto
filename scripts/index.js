@@ -1,7 +1,9 @@
 //popup and buttons' variables//
-const popupOpenButtonElement = document.querySelector('.profile__edit-btn');
-const popupElement = document.querySelector('.popup');
-const popupCloseButtonElement = popupElement.querySelector('.popup__close-btn');
+const popupOpenEditButtonElement = document.querySelector('.profile__edit-btn');
+const popupOpenAddButtonElemnt = document.querySelector('.profile__add-btn');
+const popupEditElement = document.querySelector('.popup_function_edit');
+const popupAddElement = document.querySelector('.popup_function_add');
+const popupCloseButtonElement = popupEditElement.querySelector('.popup__close-btn');
 const cardsSection = document.querySelector('.cards');
 const initialCards = [
   {
@@ -29,37 +31,50 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+//edit profile variables//
 let userName = document.querySelector('.profile__user-name');
 let userBio = document.querySelector('.profile__user-description');
 let formElement = document.querySelector('.form');
 let nameInput = formElement.querySelector('.form__input_place_name');
 let jobInput = formElement.querySelector('.form__input_place_bio');
 
+//event listener//
+function setEventListeners(cardElement) {
+  cardElement.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
+}
 
-//function for adding cards//
+//function for initial cards//
 initialCards.forEach(function (element) {
   const cardContent = document.getElementById('card').content;
   const cardElement = cardContent.cloneNode(true);
-
   cardElement.querySelector('.card__title').textContent = element.name;
   cardElement.querySelector('.card__image').src = element.link;
   cardElement.querySelector('.card__image').alt = element.name;
 
+  setEventListeners(cardElement);
+
   cardsSection.prepend(cardElement);
 });
 
+//function for deleting cards//
+function deleteCard(event) {
+  event.target.closest('.card').remove();
+}
 
-//function for opening the popup//
+
+
+//function for opening the edit profile popup//
 function openPopup() {
   nameInput.value = userName.textContent;
   jobInput.value = userBio.textContent;
 
-  popupElement.classList.add('popup_opened')
+  popupEditElement.classList.add('popup_opened')
 }
 
-//function for closing the popup//
+//function for closing the edit profile popup//
 function closePopup() {
-  popupElement.classList.remove('popup_opened')
+  popupEditElement.classList.remove('popup_opened')
 }
 
 //submit function//
@@ -71,9 +86,14 @@ function submitForm(evt) {
   closePopup();
 }
 
-popupOpenButtonElement.addEventListener('click', openPopup);
+
+popupOpenEditButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 formElement.addEventListener('submit', submitForm);
+popupOpenAddButtonElemnt.addEventListener('click', openAddPopup);
+
+
+
 
 
 
