@@ -1,9 +1,11 @@
 //popup and buttons' variables//
 const popupOpenEditButtonElement = document.querySelector('.profile__edit-btn');
-const popupOpenAddButtonElemnt = document.querySelector('.profile__add-btn');
+const popupOpenAddButtonElement = document.querySelector('.profile__add-btn');
 const popupEditElement = document.querySelector('.popup_function_edit');
 const popupAddElement = document.querySelector('.popup_function_add');
-const popupCloseButtonElement = popupEditElement.querySelector('.popup__close-btn');
+const popupCloseEditButtonElement = popupEditElement.querySelector('.popup__close-btn');
+const popupCloseAddButtonElement = popupAddElement.querySelector('.popup__close-btn');
+//cards variables//
 const cardsSection = document.querySelector('.cards');
 const initialCards = [
   {
@@ -39,6 +41,49 @@ let formElement = document.querySelector('.form');
 let nameInput = formElement.querySelector('.form__input_place_name');
 let jobInput = formElement.querySelector('.form__input_place_bio');
 
+//add profile variables//
+let formAddElement = document.querySelector('.form_place_add');
+let placeNameInput = formAddElement.querySelector('.form__input_place_new-place-name');
+let placeImageInput = formAddElement.querySelector('.form__input_place_link');
+
+//render function//
+/*function renderCards(element) {
+  const cardContent = document.getElementById('card').content;
+  const cardElement = cardContent.cloneNode(true);
+  const placeName = cardElement.querySelector('.card__title').textContent;
+  const placeImage = cardElement.querySelector('.card__image').src;
+  renderCards(element);
+}*/
+
+//functions for adding and submiting cards//
+function openAddPopup() {
+  popupAddElement.classList.add('popup_opened')
+}
+
+function closeAddPopup() {
+  popupAddElement.classList.remove('popup_opened')
+}
+
+function submitAddForm(evt) {
+  evt.preventDefault();
+  const cardContent = document.getElementById('card').content;
+  const cards = document.querySelector('.cards');
+  const card = cardContent.querySelector('.card').cloneNode(true);
+  card.querySelector('.card__title').textContent = placeNameInput.value;
+  card.querySelector('.card__image').src = placeImageInput.value;
+  cards.prepend(card);
+  card.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
+  card.querySelector('.card__button').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('card__button_active');
+  });
+  closeAddPopup();
+}
+
+//function for deleting cards//
+function deleteCard(event) {
+  event.target.closest('.card').remove();
+}
+
 //event listener//
 function setEventListeners(cardElement) {
   cardElement.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
@@ -51,24 +96,17 @@ initialCards.forEach(function (element) {
   cardElement.querySelector('.card__title').textContent = element.name;
   cardElement.querySelector('.card__image').src = element.link;
   cardElement.querySelector('.card__image').alt = element.name;
-
+  cardElement.querySelector('.card__button').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('card__button_active');
+  });
   setEventListeners(cardElement);
-
   cardsSection.prepend(cardElement);
 });
-
-//function for deleting cards//
-function deleteCard(event) {
-  event.target.closest('.card').remove();
-}
-
-
 
 //function for opening the edit profile popup//
 function openPopup() {
   nameInput.value = userName.textContent;
   jobInput.value = userBio.textContent;
-
   popupEditElement.classList.add('popup_opened')
 }
 
@@ -86,11 +124,12 @@ function submitForm(evt) {
   closePopup();
 }
 
-
 popupOpenEditButtonElement.addEventListener('click', openPopup);
-popupCloseButtonElement.addEventListener('click', closePopup);
+popupCloseEditButtonElement.addEventListener('click', closePopup);
 formElement.addEventListener('submit', submitForm);
-popupOpenAddButtonElemnt.addEventListener('click', openAddPopup);
+formAddElement.addEventListener('submit', submitAddForm);
+popupOpenAddButtonElement.addEventListener('click', openAddPopup);
+popupCloseAddButtonElement.addEventListener('click', closeAddPopup);
 
 
 

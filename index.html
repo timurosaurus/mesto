@@ -40,7 +40,7 @@
         &copy; 2021 Mesto Russia
       </p>
     </footer>
-
+    <!--Edit pop up section-->
     <div class="popup popup_function_edit">
       <div class="popup__box">
         <button type="button" class="popup__close-btn"></button>
@@ -52,31 +52,39 @@
         </form>
       </div>
     </div>
-
+    <!--Card Section-->
     <template id="card">
-        <li class="card">
-          <button class="card__delete-btn"></button>
-          <img alt="" class="card__image">
-          <div class="card__info">
-            <h2 class="card__title"></h2>
-            <button type="button" class="card__button"></button>
-          </div>
-        </li>
+      <li class="card">
+        <button class="card__delete-btn"></button>
+        <img alt="" class="card__image">
+        <div class="card__info">
+          <h2 class="card__title"></h2>
+          <button id="like" type="button" class="card__button"></button>
+        </div>
+      </li>
     </template>
-
+    <!--Add card popup-->
     <div class="popup popup_function_add">
       <div class="popup__box">
         <button type="button" class="popup__close-btn"></button>
-        <form class="form" name="form">
+        <form class="form form_place_add" name="form">
           <h3 class="form__title">Новое место</h3>
-          <input type="text" class="form__input form__input_place_new-place-name" name="new-place-name" placeholder="Название" value="">
-          <input type="url" class="form__input form__input_place_link" name="link" placeholder="Ссылка на картинку" value="">
+          <input type="text" class="form__input form__input_place_new-place-name" name="new-place-name"
+            placeholder="Название" value="" required>
+          <input type="url" class="form__input form__input_place_link" name="link" placeholder="Ссылка на картинку"
+            value="" required>
           <button type="submit" class="form__save-btn">Создать</button>
         </form>
       </div>
     </div>
-
-
+    <!--Photo expansion popup-->
+    <div class="popup popup_theme_darker popup__photo">
+      <figure class="popup__photo-container">
+        <img src="" alt="" class="popup__image">
+        <figcaption class="popup__caption"></figcaption>
+        <button type="button" class="popup__close-btn"></button>
+      </figure>
+    </div>
 
   </div>
 
@@ -85,7 +93,5 @@
   <!--<script src="./scripts/initial-cards.js"></script>
   <script src="./scripts/card.js"></script>-->
 </body>
-
-
 
 </html>
