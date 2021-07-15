@@ -35,6 +35,12 @@ const initialCards = [
   }
 ];
 
+//image popup variables//
+const expandedImagePopup = document.querySelector('.popup_theme_darker');
+const expandedImagePopupCloseButton = expandedImagePopup.querySelector('.popup__close-btn_size_small');
+let expandedPhoto = expandedImagePopup.querySelector('.popup__image');
+let expandedPhotoCaption = expandedImagePopup.querySelector('.popup__caption');
+
 //edit profile variables//
 let userName = document.querySelector('.profile__user-name');
 let userBio = document.querySelector('.profile__user-description');
@@ -121,19 +127,6 @@ function submitForm(evt) {
   closePopup();
 }
 
-popupOpenEditButtonElement.addEventListener('click', openPopup);
-popupCloseEditButtonElement.addEventListener('click', closePopup);
-formElement.addEventListener('submit', submitForm);
-formAddElement.addEventListener('submit', submitAddForm);
-popupOpenAddButtonElement.addEventListener('click', openAddPopup);
-popupCloseAddButtonElement.addEventListener('click', closeAddPopup);
-
-//image popup variables//
-const expandedImagePopup = document.querySelector('.popup_theme_darker');
-const expandedImagePopupCloseButton = expandedImagePopup.querySelector('.popup__close-btn_size_small');
-let expandedPhoto = expandedImagePopup.querySelector('.popup__image');
-let expandedPhotoCaption = expandedImagePopup.querySelector('.popup__caption');
-
 //function for image expansion popup opening//
 function expandImage (card) {
   //finding cards photo to expand and its caption//
@@ -152,6 +145,10 @@ function closeExpandedImagePopup() {
   expandedImagePopup.classList.remove('popup_opened')
 }
 
+popupOpenEditButtonElement.addEventListener('click', openPopup);
+popupCloseEditButtonElement.addEventListener('click', closePopup);
+formElement.addEventListener('submit', submitForm);
+formAddElement.addEventListener('submit', submitAddForm);
+popupOpenAddButtonElement.addEventListener('click', openAddPopup);
+popupCloseAddButtonElement.addEventListener('click', closeAddPopup);
 expandedImagePopupCloseButton.addEventListener('click', closeExpandedImagePopup);
-
-
