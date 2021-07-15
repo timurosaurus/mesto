@@ -129,8 +129,8 @@ popupOpenAddButtonElement.addEventListener('click', openAddPopup);
 popupCloseAddButtonElement.addEventListener('click', closeAddPopup);
 
 //image popup variables//
-const expandedImagePopup = document.querySelector('.popup__photo');
-const expandedImagePopupCloseButton = expandedImagePopup.querySelector('.popup__photo__close-btn');
+const expandedImagePopup = document.querySelector('.popup_theme_darker');
+const expandedImagePopupCloseButton = expandedImagePopup.querySelector('.popup__close-btn_size_small');
 let expandedPhoto = expandedImagePopup.querySelector('.popup__image');
 let expandedPhotoCaption = expandedImagePopup.querySelector('.popup__caption');
 
