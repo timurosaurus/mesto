@@ -4,12 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 75vw;
-  max-height: 75vh;
 }
 
 @media screen and (min-width: 768px) {
-  .popup__box {
+  .popup__photo-container {
     margin-top: 50px;
   }
 }
