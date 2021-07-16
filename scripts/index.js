@@ -74,8 +74,8 @@ function submitAddForm(evt) {
   card.querySelector('.card__image').src = placeImageInput.value;
   cards.prepend(card);
   card.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
-  card.querySelector('.card__button').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('card__button_active');
+  card.querySelector('.card__like-btn').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('card__like-btn_status_active');
   });
   expandImage(card);
   closeAddPopup();
@@ -98,8 +98,8 @@ initialCards.forEach(function (element) {
   cardElement.querySelector('.card__title').textContent = element.name;
   cardElement.querySelector('.card__image').src = element.link;
   cardElement.querySelector('.card__image').alt = element.name;
-  cardElement.querySelector('.card__button').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('card__button_active');
+  cardElement.querySelector('.card__like-btn').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('card__like-btn_status_active');
   });
   expandImage(cardElement);
   setEventListeners(cardElement);
