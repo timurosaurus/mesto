@@ -83,27 +83,34 @@ function closeAddPopup() {
 }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//function for giving a like//
+function likeHandler (card) {
+  const likeButton = card.querySelector('.card__like-btn');
+  likeButton.addEventListener('click', function() {
+    likeButton.classList.toggle('card__like-btn_status_active')});
+  }
+
+//function for deleting cards//
+function deleteCard(card) {
+  const deleteButton = card.querySelector('.card__delete-btn');
+  deleteButton.addEventListener('click', () => {deleteButton.closest('.card').remove()});
+}
+
 function submitAddForm(evt) {
   evt.preventDefault();
   const cardContent = document.getElementById('card').content;
-  const cards = document.querySelector('.cards');
   const card = cardContent.querySelector('.card').cloneNode(true);
   card.querySelector('.card__title').textContent = placeNameInput.value;
   card.querySelector('.card__image').src = placeImageInput.value;
-  cards.prepend(card);
-  card.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
-  card.querySelector('.card__like-btn').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('card__like-btn_status_active');
-  });
+  cardsSection.prepend(card);
+  /*card.querySelector('.card__delete-btn').addEventListener('click', deleteCard);*/
+  likeHandler(card);
   imageClickHandler(card);
   closeAddPopup();
-}
-
-//function for deleting cards//
-function deleteCard(event) {
-  event.target.closest('.card').remove();
+  deleteCard(card);
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
 //event listener//
 function setEventListeners(cardElement) {
   cardElement.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
@@ -120,6 +127,7 @@ initialCards.forEach(function (element) {
     evt.target.classList.toggle('card__like-btn_status_active');
   });
   imageClickHandler(cardElement);
+  deleteCard(cardElement);
   setEventListeners(cardElement);
   cardsSection.prepend(cardElement);
 });
