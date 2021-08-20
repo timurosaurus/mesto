@@ -89,7 +89,7 @@ function imagePreviewClickHandler(card) {
   //finding cards photo to preview and its caption//
   const photo = card.querySelector('.card__image');
   const caption = card.querySelector('.card__title');
-  photo.addEventListener('click', function () {
+  photo.addEventListener('click', function ()    {
     openPopup(imagePreviewPopup); //.classList.add('popup_opened');
     imagePreviewCaption.textContent = caption.textContent;
     poppedUpPhoto.src = photo.src;
@@ -114,11 +114,6 @@ function likeHandler(card) {
 function deleteCard(card) {
   const deleteButton = card.querySelector('.card__delete-btn');
   deleteButton.addEventListener('click', () => { deleteButton.closest('.card').remove() });
-}
-
-//event listener//
-function setEventListeners(cardElement) {
-  cardElement.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
 }
 
 //function for creating a card and setting its title and image //
@@ -153,18 +148,6 @@ function submitAddForm(evt) {
 initialCards.forEach((element) => {
   cardPrependHandler(element.name, element.link);
 });
-
-//function for initial cards//
-/*initialCards.forEach(function (element) {
-  const cardContent = document.getElementById('card').content;
-  const cardElement = cardContent.cloneNode(true);
-  cardPrependHandler(element.name, element.link);
-  likeHandler(cardElement);
-  imagePreviewClickHandler(cardElement);
-  deleteCard(cardElement);
-  setEventListeners(cardElement);
-  cardsSection.prepend(cardElement);
-});*/
 
 //event listeners//
 popupOpenAddButtonElement.addEventListener('click', addPlacePopupHandler);
