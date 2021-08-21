@@ -59,11 +59,30 @@ const placeImageInput = formAddElement.querySelector('.form__input_place_link');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
+  document.addEventListener('click', closePopupByOverlay);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
+//by esc key
+function closePopupByEsc(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+};
+
+//by clicking on overlay
+
+function closePopupByOverlay(evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+};
+
+//_____________________________________________________________________________________________________________
 
 //profile edit popup opening, closing and submitting functions//
 function editProfilePopupHanlder() {
@@ -79,6 +98,7 @@ function submitForm(evt) {
   closePopup(popupEditElement);
 }
 
+
 //functions for adding and submiting cards//
 function addPlacePopupHandler() {
   openPopup(popupAddElement);
@@ -89,7 +109,7 @@ function imagePreviewClickHandler(card) {
   //finding cards photo to preview and its caption//
   const photo = card.querySelector('.card__image');
   const caption = card.querySelector('.card__title');
-  photo.addEventListener('click', function ()    {
+  photo.addEventListener('click', function () {
     openPopup(imagePreviewPopup); //.classList.add('popup_opened');
     imagePreviewCaption.textContent = caption.textContent;
     poppedUpPhoto.src = photo.src;
@@ -97,7 +117,7 @@ function imagePreviewClickHandler(card) {
   });
 }
 
-//function for image expansion popup closing//
+//function for image preview popup closing//
 function closeImagePreviewPopup() {
   closePopup(imagePreviewPopup); //.classList.remove('popup_opened')
 }
@@ -144,7 +164,7 @@ function submitAddForm(evt) {
   addPlaceForm.reset();
 }
 
-//cicle for initial cards//
+//cycle for initial cards//
 initialCards.forEach((element) => {
   cardPrependHandler(element.name, element.link);
 });

@@ -17,11 +17,12 @@ const hideInputError = (formElement, inputElement) => {
 //function for toggling button state
 
 const toggleButtonState = (inputList, buttonElement) => {
-  const hasInvalidInput = inputList.some(
-    (inputElement) => !inputElement.validity.valid
-  );
-
-  if (hasInvalidInput) {
+  const hasInvalidInput = (inputList) => {
+    return inputList.some((inputElement) => {
+      return !inputElement.validity.valid;
+    })
+  };
+  if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute('disabled', true);
     buttonElement.classList.add('form__save-btn_inactive');
   } else {
@@ -43,25 +44,38 @@ const checkInputValidity = (formElement, inputElement) => {
 
 //event listeners setting function
 const setEventListeners = (formElement) => {
-  formElement.addEventListener('submit', (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-  });
+  };
+  formElement.addEventListener('submit', handleFormSubmit);
 
   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
   const buttonElement = formElement.querySelector('.form__save-btn');
-  inputList.forEach(inputElement => {
-    inputElement.addEventListener('input', (event) => {
+
+  const inputListIterator = (inputElement) => {
+    const handleInput = (event) => {
       checkInputValidity(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
-    });
-  });
+    };
+    inputElement.addEventListener('input', handleInput);
+  };
+
+  inputList.forEach(inputListIterator);
   toggleButtonState(inputList, buttonElement);
 };
 
 //validation enabling fuction
 const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.form'));
+  const formElement = document.querySelectorAll('.form');
+  const formList = Array.from(formElement);
   formList.forEach(setEventListeners);
 };
 
-enableValidation();
+enableValidation({
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__save-btn',
+  inactiveButtonClass: 'form__save-btn_inactive',
+  inputErrorClass: 'form__input-error',
+  errorClass: 'form__input-error_active'
+});
