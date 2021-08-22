@@ -14,35 +14,6 @@ const formElement = document.querySelector('.form');
 const nameInput = formElement.querySelector('.form__input_place_name');
 const jobInput = formElement.querySelector('.form__input_place_bio');
 
-//cards variables//
-const cardsSection = document.querySelector('.cards');
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 //image popup variables//
 const imagePreviewPopup = document.querySelector('.popup_theme_darken');
 const imagePreviewPopupCloseButton = imagePreviewPopup.querySelector('.popup__close-btn_size_small');
@@ -65,6 +36,8 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('click', closePopupByEsc);
+  document.removeEventListener('keydown', closePopupByOverlay);
 }
 
 //by esc key
@@ -75,7 +48,6 @@ function closePopupByEsc(evt) {
 };
 
 //by clicking on overlay
-
 function closePopupByOverlay(evt) {
   if (evt.target.classList.contains('popup')) {
     closePopup(document.querySelector('.popup_opened'));
@@ -97,7 +69,6 @@ function submitForm(evt) {
   userBio.textContent = jobInput.value;
   closePopup(popupEditElement);
 }
-
 
 //functions for adding and submiting cards//
 function addPlacePopupHandler() {
@@ -163,11 +134,6 @@ function submitAddForm(evt) {
   closePopup(popupAddElement);
   addPlaceForm.reset();
 }
-
-//cycle for initial cards//
-initialCards.forEach((element) => {
-  cardPrependHandler(element.name, element.link);
-});
 
 //event listeners//
 popupOpenAddButtonElement.addEventListener('click', addPlacePopupHandler);

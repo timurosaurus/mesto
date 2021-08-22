@@ -1,5 +1,3 @@
-
-
 //functions for hiding and showing error messages
 const showInputError = (formElement, inputElement, validationClasses) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
@@ -7,8 +5,8 @@ const showInputError = (formElement, inputElement, validationClasses) => {
   /*errorElement.textContent = errorMessage;
   errorElement.classList.add('form__input-error_active');*/
   inputElement.classList.add(validationClasses.inputErrorClass);
-  errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(validationClasses.errorClass);
+  errorElement.textContent = inputElement.validationMessage;
 };
 
 const hideInputError = (formElement, inputElement, validationClasses) => {
@@ -43,7 +41,7 @@ const toggleButtonState = (inputList, buttonElement, validationClasses) => {
 const checkInputValidity = (formElement, inputElement, validationClasses) => {
   const isInputInvalid = !inputElement.validity.valid;
   if (isInputInvalid) {
-    //const errorMessage = inputElement.validationMessage;
+    const errorMessage = inputElement.validationMessage;
     showInputError(formElement, inputElement, validationClasses);
   } else {
     hideInputError(formElement, inputElement, validationClasses);
