@@ -66,8 +66,8 @@ const setEventListeners = (formElement, validationClasses) => {
 
 //validation enabling fuction
 const enableValidation = (validationClasses) => {
-  const formElement = document.querySelectorAll(validationClasses.formSelector);
-  const formList = Array.from(formElement);
+  const formElements = document.querySelectorAll(validationClasses.formSelector);
+  const formList = Array.from(formElements);
   formList.forEach((formElement) => {
     setEventListeners(formElement, validationClasses)
   });
@@ -78,6 +78,6 @@ enableValidation({
   inputSelector: '.form__input',
   submitButtonSelector: '.form__save-btn',
   inactiveButtonClass: 'form__save-btn_inactive',
-  inputErrorClass: 'input_error-status_active',
+  inputErrorClass: 'form__input_error-status_active',
   errorClass: 'form__input-error_active'
 });
