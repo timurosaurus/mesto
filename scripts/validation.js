@@ -1,9 +1,6 @@
 //functions for hiding and showing error messages
 const showInputError = (formElement, inputElement, validationClasses) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  //closest('.popup__box').querySelector('.form__input-error');
-  /*errorElement.textContent = errorMessage;
-  errorElement.classList.add('form__input-error_active');*/
   inputElement.classList.add(validationClasses.inputErrorClass);
   errorElement.classList.add(validationClasses.errorClass);
   errorElement.textContent = inputElement.validationMessage;
@@ -11,9 +8,6 @@ const showInputError = (formElement, inputElement, validationClasses) => {
 
 const hideInputError = (formElement, inputElement, validationClasses) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  //closest('.popup__box').querySelector('.form__input-error');
-  /*errorElement.textContent = '';
-  errorElement.classList.remove('form__input-error_active');*/
   inputElement.classList.remove(validationClasses.inputErrorClass);
   errorElement.classList.remove(validationClasses.errorClass);
   errorElement.textContent = '';
@@ -84,6 +78,6 @@ enableValidation({
   inputSelector: '.form__input',
   submitButtonSelector: '.form__save-btn',
   inactiveButtonClass: 'form__save-btn_inactive',
-  inputErrorClass: 'form__input-error',
+  inputErrorClass: 'input_error-status_active',
   errorClass: 'form__input-error_active'
 });
