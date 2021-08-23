@@ -108,21 +108,21 @@ function deleteCard(card) {
 }
 
 //function for creating a card and setting its title and image //
-function setCardTitleAndImage(title, image) {
+function createCard(title, image) {
   const cardContent = document.getElementById('card').content;
   const card = cardContent.querySelector('.card').cloneNode(true);
   card.querySelector('.card__title').textContent = title;
   card.querySelector('.card__image').src = image;
   card.querySelector('.card__image').alt = title;
-  return card;
-}
-
-//function for creating and prepending a card + setting delete, preview and like handlers//
-function cardPrependHandler(title, image) {
-  const card = setCardTitleAndImage(title, image);
   deleteCard(card);
   likeHandler(card);
   imagePreviewClickHandler(card);
+  return card;
+}
+
+//function prepending a card //
+function prependCard(title, image) {
+  const card = createCard(title, image);
   cardsSection.prepend(card);
 }
 //function for card submission + reseting previous inputs//
@@ -130,9 +130,18 @@ function submitAddForm(evt) {
   evt.preventDefault();
   const title = placeTitleInput.value;
   const image = placeImageInput.value;
-  cardPrependHandler(title, image)
+  prependCard(title, image)
   closePopup(popupAddElement);
   addPlaceForm.reset();
+  blockSubmit()
+}
+
+//function for disabling submit button
+
+function blockSubmit() {
+  button = popupAddElement.querySelector('.form__save-btn');
+  button.disabled = true;
+   button.classList.add('form__save-btn_inactive');
 }
 
 //event listeners//

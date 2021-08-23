@@ -30,6 +30,6 @@ const initialCards = [
 
 //cycle for initial cards//
 initialCards.forEach((element) => {
-  cardPrependHandler(element.name, element.link);
+  prependCard(element.name, element.link);
 });
 
