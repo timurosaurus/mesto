@@ -38,8 +38,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('click', closePopupByEsc);
   document.removeEventListener('keydown', closePopupByOverlay);
-  resetInputs();
-
 };
 
 // **by esc key
@@ -55,13 +53,7 @@ function closePopupByOverlay(evt) {
     closePopup(document.querySelector('.popup_opened'));
   }
 };
-//**reseting inputs after closing
 
-
-function resetInputs() {
-  document.forms.editingprofileform.reset();
-  document.forms.addingplaceform.reset();
-};
 //_____________________________________________________________________________________________________________
 
 //profile edit popup opening, closing and submitting functions//
@@ -76,8 +68,6 @@ function submitForm(evt) {
   userName.textContent = nameInput.value;
   userBio.textContent = jobInput.value;
   closePopup(popupEditElement);
-  /*resetInputs();
-  blockSubmit();*/
 };
 
 //functions for adding and submiting cards//
@@ -143,17 +133,16 @@ function submitAddForm(evt) {
   const image = placeImageInput.value;
   prependCard(title, image)
   closePopup(popupAddElement);
-  resetInputs();
-  blockSubmit();
+  toggleButtonState(title, image);
 };
 
 //function for disabling submit button
 
-function blockSubmit() {
+/*function blockSubmit() {
   button = popupAddElement.querySelector('.form__save-btn');
   button.disabled = true;
   button.classList.add('form__save-btn_inactive');
-};
+};*/
 
 //event listeners//
 popupOpenAddButtonElement.addEventListener('click', addPlacePopupHandler);
