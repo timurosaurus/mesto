@@ -15,16 +15,20 @@ const hideInputError = (formElement, inputElement, validationClasses) => {
 //________________________________________________________________________________________________________________
 
 //function for toggling button state
+const blockSubmit = () => {
+  button = popupAddElement.querySelector('.form__save-btn');
+  button.disabled = true;
+  button.classList.add('form__save-btn_inactive');
+};
 
 const toggleButtonState = (inputList, buttonElement, validationClasses) => {
   const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
-    })
+    });
   };
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(validationClasses.inactiveButtonClass);
+    blockSubmit(buttonElement);
   } else {
     buttonElement.removeAttribute('disabled');
     buttonElement.classList.remove(validationClasses.inactiveButtonClass);

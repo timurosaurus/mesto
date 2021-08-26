@@ -133,16 +133,13 @@ function submitAddForm(evt) {
   const image = placeImageInput.value;
   prependCard(title, image)
   closePopup(popupAddElement);
-  toggleButtonState(title, image);
+  addPlaceForm.reset();
+  blockSubmit();
 };
 
 //function for disabling submit button
 
-/*function blockSubmit() {
-  button = popupAddElement.querySelector('.form__save-btn');
-  button.disabled = true;
-  button.classList.add('form__save-btn_inactive');
-};*/
+
 
 //event listeners//
 popupOpenAddButtonElement.addEventListener('click', addPlacePopupHandler);
