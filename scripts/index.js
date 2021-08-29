@@ -25,9 +25,9 @@ const addPlaceForm = document.forms.addingplaceform;
 const formAddElement = document.querySelector('.form_place_add');
 const placeTitleInput = formAddElement.querySelector('.form__input_place_new-place-name');
 const placeImageInput = formAddElement.querySelector('.form__input_place_link');
+const placeSubmitButton = formAddElement.querySelector('.form__save-btn');
 
 //popup opening and closing functions//
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
@@ -134,12 +134,8 @@ function submitAddForm(evt) {
   prependCard(title, image)
   closePopup(popupAddElement);
   addPlaceForm.reset();
-  blockSubmit();
+  blockSubmit(placeSubmitButton, config);
 };
-
-//function for disabling submit button
-
-
 
 //event listeners//
 popupOpenAddButtonElement.addEventListener('click', addPlacePopupHandler);

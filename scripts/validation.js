@@ -1,3 +1,12 @@
+//object
+const config = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__save-btn',
+  inactiveButtonClass: 'form__save-btn_inactive',
+  inputErrorClass: 'form__input_error-status_active',
+  errorClass: 'form__input-error_active'
+};
 //functions for hiding and showing error messages
 const showInputError = (formElement, inputElement, validationClasses) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
@@ -14,21 +23,21 @@ const hideInputError = (formElement, inputElement, validationClasses) => {
 };
 //________________________________________________________________________________________________________________
 
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
 //function for toggling button state
-const blockSubmit = () => {
-  button = popupAddElement.querySelector('.form__save-btn');
-  button.disabled = true;
-  button.classList.add('form__save-btn_inactive');
+const blockSubmit = (buttonElement, validationClasses) => {
+  buttonElement.disabled = true;
+  buttonElement.classList.add(validationClasses.inactiveButtonClass);
 };
 
 const toggleButtonState = (inputList, buttonElement, validationClasses) => {
-  const hasInvalidInput = (inputList) => {
-    return inputList.some((inputElement) => {
-      return !inputElement.validity.valid;
-    });
-  };
   if (hasInvalidInput(inputList)) {
-    blockSubmit(buttonElement);
+    blockSubmit(buttonElement, validationClasses);
   } else {
     buttonElement.removeAttribute('disabled');
     buttonElement.classList.remove(validationClasses.inactiveButtonClass);
@@ -60,7 +69,7 @@ const setEventListeners = (formElement, validationClasses) => {
     const handleInput = (event) => {
       checkInputValidity(formElement, inputElement, validationClasses);
       toggleButtonState(inputList, buttonElement, validationClasses);
-    };
+      };
     inputElement.addEventListener('input', handleInput);
   };
 
@@ -77,11 +86,4 @@ const enableValidation = (validationClasses) => {
   });
 };
 
-enableValidation({
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__save-btn',
-  inactiveButtonClass: 'form__save-btn_inactive',
-  inputErrorClass: 'form__input_error-status_active',
-  errorClass: 'form__input-error_active'
-});
+enableValidation(config);
