@@ -61,6 +61,7 @@ function editProfilePopupHanlder() {
   nameInput.value = userName.textContent;
   jobInput.value = userBio.textContent;
   openPopup(popupEditElement);
+
 };
 
 function submitForm(evt) {
@@ -73,6 +74,7 @@ function submitForm(evt) {
 //functions for adding and submiting cards//
 function addPlacePopupHandler() {
   openPopup(popupAddElement);
+  blockSubmit(placeSubmitButton, config);
 };
 
 //function for image preview popup opening//
@@ -134,7 +136,6 @@ function submitAddForm(evt) {
   prependCard(title, image)
   closePopup(popupAddElement);
   addPlaceForm.reset();
-  blockSubmit(placeSubmitButton, config);
 };
 
 //event listeners//

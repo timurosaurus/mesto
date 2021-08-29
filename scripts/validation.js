@@ -48,7 +48,7 @@ const toggleButtonState = (inputList, buttonElement, validationClasses) => {
 const checkInputValidity = (formElement, inputElement, validationClasses) => {
   const isInputInvalid = !inputElement.validity.valid;
   if (isInputInvalid) {
-    //const errorMessage = inputElement.validationMessage;
+    const errorMessage = inputElement.validationMessage;
     showInputError(formElement, inputElement, validationClasses);
   } else {
     hideInputError(formElement, inputElement, validationClasses);
