@@ -1,5 +1,4 @@
 //cards variables//
-const cardsSection = document.querySelector('.cards');
 const initialCards = [
   {
     name: 'Архыз',

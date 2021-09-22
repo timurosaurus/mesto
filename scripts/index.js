@@ -1,3 +1,5 @@
+export { Card } from './Card.js';
+
 //popup and buttons' variables//
 const popupElement = document.querySelector('.popup');
 const popupOpenEditButtonElement = document.querySelector('.profile__edit-btn');
@@ -28,7 +30,7 @@ const placeImageInput = formAddElement.querySelector('.form__input_place_link');
 const placeSubmitButton = formAddElement.querySelector('.form__save-btn');
 
 //popup opening and closing functions//
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
   document.addEventListener('click', closePopupByOverlay);
@@ -125,6 +127,7 @@ function createCard(title, image) {
 //function prepending a card //
 function prependCard(title, image) {
   const card = createCard(title, image);
+  const cardsSection = document.querySelector('.cards');
   cardsSection.prepend(card);
 };
 
@@ -150,3 +153,5 @@ popupOpenEditButtonElement.addEventListener('click', editProfilePopupHanlder);
 formElement.addEventListener('submit', submitForm);
 formAddElement.addEventListener('submit', submitAddForm);
 imagePreviewPopupCloseButton.addEventListener('click', closeImagePreviewPopup);
+
+
