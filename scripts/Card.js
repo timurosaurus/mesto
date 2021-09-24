@@ -27,13 +27,13 @@ class Card {
 
   _imagePreviewClickHandler= () => {
     //finding cards photo to preview and its caption//
-    const imagePreview = card.querySelector('.card__image');
-    const imagePreviewCaption = card.querySelector('.card__title');
+    const imagePreview = card.querySelector('.popup__image');
+    const imagePreviewCaption = card.querySelector('.popup__caption');
 
     openPopup(card);
-    imagePreviewCaption.textContent = this._name;
-    imagePreview.src = this._link;
-    imagePreview.alt = this._name;
+    imagePreviewCaption.textContent = this._name.textContent;
+    imagePreview.src = this._link.src;
+    imagePreview.alt = this._name.textContent;
   }
 
   _setEventListeners= () => {

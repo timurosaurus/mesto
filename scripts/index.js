@@ -2,8 +2,8 @@ import { Card } from "./Card.js";
 import { initialCards } from "./initialcards.js";
 
 //cycle for initial cards//
-initialCards.forEach((_element) => {
-  prependCard(_element.name, _element.link);
+initialCards.forEach((element) => {
+  prependCard(element.name, element.link);
 });
 //popup and buttons' variables//
 const popupElement = document.querySelector('.popup');
@@ -115,8 +115,8 @@ function createCard(title, image) {
 };*/
 
 //function prepending a card //
-function prependCard(title, image) {
-  const card = new Card (title, image);
+function prependCard(item) {
+  const card = new Card (item, '.card-template');
   const cardsSection = document.querySelector('.cards');
   cardsSection.prepend(card);
 };
@@ -125,7 +125,7 @@ function submitAddForm(evt) {
   evt.preventDefault();
   const title = placeTitleInput.value;
   const image = placeImageInput.value;
-  prependCard(title, image)
+  prependCard(title, image);
   closePopup(popupAddElement);
   addPlaceForm.reset();
   blockSubmit(placeSubmitButton, config);
