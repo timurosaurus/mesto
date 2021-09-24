@@ -1,14 +1,12 @@
-import { openPopup } from './index.js';
 
 class Card {
   constructor (data, cardSelector) {
-    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
   }
 
-  _getTemplate() {
+  _getTemplate= () => {
     const cardElement = document
       .querySelector(this._cardSelector)
       .content
@@ -18,16 +16,16 @@ class Card {
     return cardElement;
   }
 
-  _likeHandler() {
+  _likeHandler= () => {
     this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_status_active');
   }
 
-  _deleteCardHandler() {
+  _deleteCardHandler= () => {
     this._element.querySelector('.card__delete-btn').closest('.card').remove();
   }
 
 
-  _imagePreviewClickHandler() {
+  _imagePreviewClickHandler= () => {
     //finding cards photo to preview and its caption//
     const imagePreview = card.querySelector('.card__image');
     const imagePreviewCaption = card.querySelector('.card__title');
@@ -38,7 +36,7 @@ class Card {
     imagePreview.alt = this._name;
   }
 
-  _setEventListeners() {
+  _setEventListeners= () => {
 
     this._element.querySelector('.card__like-btn').addEventListener('click', () => {
       this._likeHandler();
@@ -51,7 +49,7 @@ class Card {
     });
   }
 
-  generateCard() {
+  generateCard= () => {
     this._element = this._getTemplate();
     this._setEventListeners();
 

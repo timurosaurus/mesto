@@ -28,7 +28,6 @@ const initialCards = [
 
 
 //cycle for initial cards//
-initialCards.forEach((element) => {
-  prependCard(element.name, element.link);
+initialCards.forEach((_element) => {
+  prependCard(_element.name, _element.link);
 });
-

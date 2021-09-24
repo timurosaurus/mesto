@@ -7,10 +7,8 @@ const config = {
   inputErrorClass: 'form__input_error-status_active',
   errorClass: 'form__input-error_active'
 };
+
 //functions for hiding and showing error messages
-
-
-
   const showInputError = (formElement, inputElement, validationClasses) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(validationClasses.inputErrorClass);
