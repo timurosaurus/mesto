@@ -1,5 +1,10 @@
 import { Card } from "./Card.js";
+import { initialCards } from "./initialcards.js";
 
+//cycle for initial cards//
+initialCards.forEach((_element) => {
+  prependCard(_element.name, _element.link);
+});
 //popup and buttons' variables//
 const popupElement = document.querySelector('.popup');
 const popupOpenEditButtonElement = document.querySelector('.profile__edit-btn');

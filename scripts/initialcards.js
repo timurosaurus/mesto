@@ -1,5 +1,5 @@
 //cards variables//
-const initialCards = [
+export const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -27,7 +27,3 @@ const initialCards = [
 ];
 
 
-//cycle for initial cards//
-initialCards.forEach((_element) => {
-  prependCard(_element.name, _element.link);
-});
