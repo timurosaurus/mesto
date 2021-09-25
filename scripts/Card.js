@@ -6,26 +6,27 @@ class Card {
     this._cardSelector = cardSelector;
   }
 
-  _getTemplate= () => {
-    const cardElement = document
+  _getTemplate() {
+    const cardTemplate = document
       .querySelector(this._cardSelector)
       .content
-      .querySelector('.card-template')
+      //.querySelector('.card-template')
       .cloneNode(true);
 
-    return cardElement;
+    return cardTemplate;
   }
 
-  _likeHandler= () => {
-    this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_status_active');
+  _likeHandler() {
+    this._element.querySelector('.card__like-btn').addEventListener('click', () => {
+      this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_status_active')});
   }
 
-  _deleteCardHandler= () => {
+  _deleteCardHandler() {
     this._element.querySelector('.card__delete-btn').closest('.card').remove();
   }
 
 
-  _imagePreviewClickHandler= () => {
+  _imagePreviewClickHandler() {
     //finding cards photo to preview and its caption//
     const imagePreview = card.querySelector('.popup__image');
     const imagePreviewCaption = card.querySelector('.popup__caption');
@@ -36,7 +37,7 @@ class Card {
     imagePreview.alt = this._name.textContent;
   }
 
-  _setEventListeners= () => {
+  _setEventListeners() {
 
     this._element.querySelector('.card__like-btn').addEventListener('click', () => {
       this._likeHandler();
@@ -49,7 +50,7 @@ class Card {
     });
   }
 
-  generateCard= () => {
+  generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
 

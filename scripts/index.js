@@ -1,10 +1,6 @@
-import { Card } from "./Card.js";
 import { initialCards } from "./initialcards.js";
+import { Card } from "./Card.js";
 
-//cycle for initial cards//
-initialCards.forEach((element) => {
-  prependCard(element.name, element.link);
-});
 //popup and buttons' variables//
 const popupElement = document.querySelector('.popup');
 const popupOpenEditButtonElement = document.querySelector('.profile__edit-btn');
@@ -115,10 +111,12 @@ function createCard(title, image) {
 };*/
 
 //function prepending a card //
-function prependCard(item) {
-  const card = new Card (item, '.card-template');
+function prependCard(data) {
+  const card = new Card (data, '.card-template');
   const cardsSection = document.querySelector('.cards');
-  cardsSection.prepend(card);
+
+  const cardElement = card.generateCard();
+  cardsSection.prepend(cardElement);
 };
 //function for card submission + reseting previous inputs//
 function submitAddForm(evt) {
@@ -143,3 +141,8 @@ popupOpenEditButtonElement.addEventListener('click', editProfilePopupHanlder);
 formElement.addEventListener('submit', submitForm);
 formAddElement.addEventListener('submit', submitAddForm);
 imagePreviewPopupCloseButton.addEventListener('click', closeImagePreviewPopup);
+
+//cycle for initial cards//
+initialCards.forEach((element) => {
+  prependCard(element.name, element.link);
+});
