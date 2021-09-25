@@ -19,8 +19,6 @@ const jobInput = formElement.querySelector('.form__input_place_bio');
 //image popup variables//
 export const imagePreviewPopup = document.querySelector('.popup_theme_darken');
 const imagePreviewPopupCloseButton = imagePreviewPopup.querySelector('.popup__close-btn_size_small');
-const poppedUpPhoto = imagePreviewPopup.querySelector('.popup__image');
-const imagePreviewCaption = imagePreviewPopup.querySelector('.popup__caption');
 //add place variables//
 const addPlaceForm = document.forms.addingplaceform;
 const formAddElement = document.querySelector('.form_place_add');
@@ -76,7 +74,7 @@ function closeImagePreviewPopup() {
 
 //function prepending a card //
 function prependCard(data) {
-  const card = new Card(data, '.card-template');
+  const card = new Card(data, '#card');
   const cardsSection = document.querySelector('.cards');
 
   const cardElement = card.createCard();

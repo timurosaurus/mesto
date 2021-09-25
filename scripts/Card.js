@@ -17,7 +17,7 @@ class Card {
   }
 
   //method for giving a like
-  _likeHandler(_element) {
+  _likeHandler() {
     this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_status_active');
   }
 
