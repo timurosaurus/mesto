@@ -1,4 +1,4 @@
-
+import { openPopup, imagePreviewPopup } from './index.js';
 class Card {
   constructor (data, cardSelector) {
     this._name = data.name;
@@ -27,13 +27,13 @@ class Card {
 
   _imagePreviewClickHandler() {
     //finding cards photo to preview and its caption//
-    const imagePreview = card.querySelector('.popup__image');
-    const imagePreviewCaption = card.querySelector('.popup__caption');
+    const imagePreview = imagePreviewPopup.querySelector('.popup__image');
+    const imagePreviewCaption = imagePreviewPopup.querySelector('.popup__caption');
 
-    openPopup(card);
-    imagePreviewCaption.textContent = this._name.textContent;
-    imagePreview.src = this._link.src;
-    imagePreview.alt = this._name.textContent;
+    openPopup(imagePreviewPopup);
+    imagePreviewCaption.textContent = this._element.querySelector('.card__title').textContent;
+    imagePreview.src = this._element.querySelector('.card__image').src;
+    imagePreview.alt = this._element.querySelector('.card__title').textContent;
   }
 
   _setEventListeners() {
@@ -49,7 +49,7 @@ class Card {
     });
   }
 
-  generateCard() {
+  createCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
 

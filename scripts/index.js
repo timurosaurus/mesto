@@ -15,7 +15,7 @@ const formElement = document.querySelector('.form');
 const nameInput = formElement.querySelector('.form__input_place_name');
 const jobInput = formElement.querySelector('.form__input_place_bio');
 //image popup variables//
-const imagePreviewPopup = document.querySelector('.popup_theme_darken');
+export const imagePreviewPopup = document.querySelector('.popup_theme_darken');
 const imagePreviewPopupCloseButton = imagePreviewPopup.querySelector('.popup__close-btn_size_small');
 const poppedUpPhoto = imagePreviewPopup.querySelector('.popup__image');
 const imagePreviewCaption = imagePreviewPopup.querySelector('.popup__caption');
@@ -114,7 +114,7 @@ function prependCard(data) {
   const card = new Card (data, '.card-template');
   const cardsSection = document.querySelector('.cards');
 
-  const cardElement = card.generateCard();
+  const cardElement = card.createCard();
   cardsSection.prepend(cardElement);
 };
 //function for card submission + reseting previous inputs//
