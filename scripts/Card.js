@@ -1,14 +1,14 @@
 import { openPopup, imagePreviewPopup } from './index.js';
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, selector) {
     this._name = data.name;
     this._link = data.link;
-    this._cardSelector = cardSelector;
+    this._selector = selector;
   }
   //creating a template
-  _getTemplate() {
+  _getCardTemplate() {
     const cardTemplate = document
-      .querySelector(this._cardSelector)
+      .querySelector(this._selector)
       .content
       .querySelector('.card')
       .cloneNode(true);
@@ -52,7 +52,7 @@ class Card {
   }
 
   createCard() {
-    this._element = this._getTemplate();
+    this._element = this._getCardTemplate();
     this._setEventListeners();
 
     this._element.querySelector('.card__title').textContent = this._name;
