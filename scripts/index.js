@@ -84,30 +84,6 @@ function addPlacePopupHandler() {
 function closeImagePreviewPopup() {
   closePopup(imagePreviewPopup); //.classList.remove('popup_opened')
 };
-//function for giving a like//
-/*function likeHandler(card) {
-  const likeButton = card.querySelector('.card__like-btn');
-  likeButton.addEventListener('click', function () {
-    likeButton.classList.toggle('card__like-btn_status_active')
-  });
-};
-//function for deleting cards//
-function deleteCard(card) {
-  const deleteButton = card.querySelector('.card__delete-btn');
-  deleteButton.addEventListener('click', () => { deleteButton.closest('.card').remove() });
-};
-//function for creating a card and setting its title and image //
-function createCard(title, image) {
-  const cardContent = document.getElementById('card').content;
-  const card = cardContent.querySelector('.card').cloneNode(true);
-  card.querySelector('.card__title').textContent = title;
-  card.querySelector('.card__image').src = image;
-  card.querySelector('.card__image').alt = title;
-  deleteCard(card);
-  likeHandler(card);
-  imagePreviewClickHandler(card);
-  return card;
-};*/
 
 //function prepending a card //
 function prependCard(data) {

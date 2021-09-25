@@ -5,26 +5,28 @@ class Card {
     this._link = data.link;
     this._cardSelector = cardSelector;
   }
-
+  //creating a template
   _getTemplate() {
     const cardTemplate = document
       .querySelector(this._cardSelector)
       .content
-      .firstElementChild
+      .querySelector('.card')
       .cloneNode(true);
 
     return cardTemplate;
   }
 
+  //method for giving a like
   _likeHandler(_element) {
     this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_status_active');
   }
 
+  //method for deleting a card
   _deleteCardHandler() {
     this._element.querySelector('.card__delete-btn').closest('.card').remove();
   }
 
-
+  //method for image preview
   _imagePreviewClickHandler() {
     //finding cards photo to preview and its caption//
     const imagePreview = imagePreviewPopup.querySelector('.popup__image');
@@ -35,7 +37,7 @@ class Card {
     imagePreview.src = this._element.querySelector('.card__image').src;
     imagePreview.alt = this._element.querySelector('.card__title').textContent;
   }
-
+  //event listeners
   _setEventListeners() {
 
     this._element.querySelector('.card__like-btn').addEventListener('click', () => {
