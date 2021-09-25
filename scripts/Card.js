@@ -10,15 +10,14 @@ class Card {
     const cardTemplate = document
       .querySelector(this._cardSelector)
       .content
-      //.querySelector('.card-template')
+      .firstElementChild
       .cloneNode(true);
 
     return cardTemplate;
   }
 
-  _likeHandler() {
-    this._element.querySelector('.card__like-btn').addEventListener('click', () => {
-      this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_status_active')});
+  _likeHandler(_element) {
+    this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_status_active');
   }
 
   _deleteCardHandler() {
@@ -54,9 +53,9 @@ class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
+    this._element.querySelector('.card__title').textContent = this._name;
     this._element.querySelector('.card__image').src = this._link;
     this._element.querySelector('.card__image').alt = this._name;
-    this._element.querySelector('.card__title').textContent = this._name;
 
     return this._element;
   }

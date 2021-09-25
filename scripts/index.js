@@ -121,9 +121,11 @@ function prependCard(data) {
 //function for card submission + reseting previous inputs//
 function submitAddForm(evt) {
   evt.preventDefault();
-  const title = placeTitleInput.value;
-  const image = placeImageInput.value;
-  prependCard(title, image);
+  const newCard = {
+    name: placeTitleInput.value,
+    link: placeImageInput.value
+    }
+  prependCard(newCard);
   closePopup(popupAddElement);
   addPlaceForm.reset();
   blockSubmit(placeSubmitButton, config);
