@@ -2,7 +2,6 @@ import { initialCards } from "./initialcards.js";
 import { Card } from "./Card.js";
 
 //popup and buttons' variables//
-const popupElement = document.querySelector('.popup');
 const popupOpenEditButtonElement = document.querySelector('.profile__edit-btn');
 const popupOpenAddButtonElement = document.querySelector('.profile__add-btn');
 const popupEditElement = document.querySelector('.popup_function_edit');
