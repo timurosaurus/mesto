@@ -1,6 +1,8 @@
 import { initialCards } from "./initialcards.js";
 import { Card } from "./Card.js";
 
+//cycle for initial cards//
+initialCards.forEach(prependCard);
 //popup and buttons' variables//
 const popupOpenEditButtonElement = document.querySelector('.profile__edit-btn');
 const popupOpenAddButtonElement = document.querySelector('.profile__add-btn');
@@ -67,19 +69,6 @@ function addPlacePopupHandler() {
   openPopup(popupAddElement);
 };
 
-//function for image preview popup opening//
-/*function imagePreviewClickHandler(card) {
-  //finding cards photo to preview and its caption//
-  const photo = card.querySelector('.card__image');
-  const caption = card.querySelector('.card__title');
-  photo.addEventListener('click', function () {
-    openPopup(imagePreviewPopup); //.classList.add('popup_opened');
-    imagePreviewCaption.textContent = caption.textContent;
-    poppedUpPhoto.src = photo.src;
-    poppedUpPhoto.alt = caption.textContent;
-  });
-};*/
-
 //function for image preview popup closing//
 function closeImagePreviewPopup() {
   closePopup(imagePreviewPopup); //.classList.remove('popup_opened')
@@ -87,7 +76,7 @@ function closeImagePreviewPopup() {
 
 //function prepending a card //
 function prependCard(data) {
-  const card = new Card (data, '.card-template');
+  const card = new Card(data, '.card-template');
   const cardsSection = document.querySelector('.cards');
 
   const cardElement = card.createCard();
@@ -99,7 +88,7 @@ function submitAddForm(evt) {
   const newCard = {
     name: placeTitleInput.value,
     link: placeImageInput.value
-    }
+  }
   prependCard(newCard);
   closePopup(popupAddElement);
   addPlaceForm.reset();
@@ -118,8 +107,3 @@ popupOpenEditButtonElement.addEventListener('click', editProfilePopupHanlder);
 formElement.addEventListener('submit', submitForm);
 formAddElement.addEventListener('submit', submitAddForm);
 imagePreviewPopupCloseButton.addEventListener('click', closeImagePreviewPopup);
-
-//cycle for initial cards//
-initialCards.forEach((element) => {
-  prependCard(element.name, element.link);
-});
