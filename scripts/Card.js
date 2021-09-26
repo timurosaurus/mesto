@@ -6,7 +6,7 @@ class Card {
     this._selector = selector;
   }
   //creating a template
-  _getCardTemplate() {
+  _getCardTemplate = () => {
     const cardTemplate = document
       .querySelector(this._selector)
       .content
@@ -17,21 +17,20 @@ class Card {
   }
 
   //method for giving a like
-  _likeHandler() {
+  _likeHandler = () => {
     this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_status_active');
   }
 
   //method for deleting a card
-  _deleteCardHandler() {
+  _deleteCardHandler = () => {
     this._element.querySelector('.card__delete-btn').closest('.card').remove();
   }
 
   //method for image preview
-  _imagePreviewClickHandler() {
+  _imagePreviewClickHandler = () => {
     //finding cards photo to preview and its caption//
     const imagePreview = imagePreviewPopup.querySelector('.popup__image');
     const imagePreviewCaption = imagePreviewPopup.querySelector('.popup__caption');
-
     openPopup(imagePreviewPopup);
     imagePreviewCaption.textContent = this._element.querySelector('.card__title').textContent;
     imagePreview.src = this._element.querySelector('.card__image').src;
@@ -39,7 +38,6 @@ class Card {
   }
   //event listeners
   _setEventListeners() {
-
     this._element.querySelector('.card__like-btn').addEventListener('click', () => {
       this._likeHandler();
     });
@@ -51,10 +49,9 @@ class Card {
     });
   }
 
-  createCard() {
+  createCard = () => {
     this._element = this._getCardTemplate();
     this._setEventListeners();
-
     this._element.querySelector('.card__title').textContent = this._name;
     this._element.querySelector('.card__image').src = this._link;
     this._element.querySelector('.card__image').alt = this._name;

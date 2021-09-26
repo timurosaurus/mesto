@@ -1,30 +1,40 @@
 import { initialCards } from "./initialcards.js";
 import { Card } from "./Card.js";
+import { validationConfig, FormValidator } from './FormValidator.js';
 
 //cycle for initial cards//
 initialCards.forEach(prependCard);
+
 //popup and buttons' variables//
 const popupOpenEditButtonElement = document.querySelector('.profile__edit-btn');
 const popupOpenAddButtonElement = document.querySelector('.profile__add-btn');
 const popupEditElement = document.querySelector('.popup_function_edit');
+const editElementValidator = new FormValidator(validationConfig, popupEditElement);
+editElementValidator.enableValidation();
 const popupAddElement = document.querySelector('.popup_function_add');
+const addElementValidator = new FormValidator(validationConfig, popupAddElement);
+addElementValidator.enableValidation();
 const popupCloseButtonElement = document.querySelector('.popup__close-btn');
 const popupCloseAddButtonElement = popupAddElement.querySelector('.popup__close-btn');
+
 //edit profile variables//
 const userName = document.querySelector('.profile__user-name');
 const userBio = document.querySelector('.profile__user-description');
 const formElement = document.querySelector('.form');
 const nameInput = formElement.querySelector('.form__input_place_name');
 const jobInput = formElement.querySelector('.form__input_place_bio');
+
 //image popup variables//
 export const imagePreviewPopup = document.querySelector('.popup_theme_darken');
 const imagePreviewPopupCloseButton = imagePreviewPopup.querySelector('.popup__close-btn_size_small');
+
 //add place variables//
 const addPlaceForm = document.forms.addingplaceform;
 const formAddElement = document.querySelector('.form_place_add');
 const placeTitleInput = formAddElement.querySelector('.form__input_place_new-place-name');
 const placeImageInput = formAddElement.querySelector('.form__input_place_link');
 const placeSubmitButton = formAddElement.querySelector('.form__save-btn');
+
 //popup opening and closing functions//
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -90,7 +100,7 @@ function submitAddForm(evt) {
   prependCard(newCard);
   closePopup(popupAddElement);
   addPlaceForm.reset();
-  blockSubmit(placeSubmitButton, config);
+  blockSubmit(placeSubmitButton, validationConfig);
 };
 
 //event listeners//
