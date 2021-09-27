@@ -1,6 +1,6 @@
 import { initialCards } from "./initialcards.js";
 import { Card } from "./Card.js";
-import { validationConfig, FormValidator } from './FormValidator.js';
+import { FormValidator, validationConfig } from './FormValidator.js';
 
 //cycle for initial cards//
 initialCards.forEach(prependCard);
@@ -93,14 +93,11 @@ function prependCard(data) {
 //function for card submission + reseting previous inputs//
 function submitAddForm(evt) {
   evt.preventDefault();
-  const newCard = {
-    name: placeTitleInput.value,
-    link: placeImageInput.value
-  }
+  const newCard = { name: placeTitleInput.value, link: placeImageInput.value }
   prependCard(newCard);
   closePopup(popupAddElement);
   addPlaceForm.reset();
-  blockSubmit(placeSubmitButton, validationConfig);
+  blockSubmit(placeSubmitButton);
 };
 
 //event listeners//

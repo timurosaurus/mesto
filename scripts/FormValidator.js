@@ -10,7 +10,6 @@ const validationConfig = {
 
 class FormValidator {
   constructor(config, formElement) {
-    this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
@@ -66,6 +65,13 @@ class FormValidator {
       this._hideInputError(inputElement);
     }
   }
+/*
+    if (inputElement.validity.valid) {
+      this._hideInputError(inputElement);
+    } else {
+      this._showInputError(inputElement);
+    }
+  }*/
 
   //event listeners setting method
   _setEventListeners = () => {
