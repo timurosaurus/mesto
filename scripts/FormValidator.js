@@ -24,6 +24,7 @@ class FormValidator {
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
     errorElement.textContent = inputElement.validationMessage;
+    console.log('hola');
   }
 
   _hideInputError = (inputElement) => {
@@ -31,6 +32,7 @@ class FormValidator {
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
+    console.log('hola');
   }
 
   //has at least one invalid element
@@ -38,21 +40,23 @@ class FormValidator {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
+
   }
 
   //method for toggling button state
-  blockSubmit = (buttonElement) => {
+  _blockSubmit = (buttonElement) => {
     buttonElement.disabled = true;
     buttonElement.classList.add(this._inactiveButtonClass);
   }
 
-  toggleButtonState = (inputList) => {
+  _toggleButtonState = (inputList) => {
     if (this._hasInvalidInput(inputList)) {
-      blockSubmit(buttonElement);
+      this._blockSubmit(buttonElement);
     } else {
       buttonElement.removeAttribute('disabled');
       buttonElement.classList.remove(this._inactiveButtonClass);
     }
+
   }
 
   //method for validity check
@@ -64,6 +68,7 @@ class FormValidator {
     } else {
       this._hideInputError(inputElement);
     }
+
   }
 /*
     if (inputElement.validity.valid) {
@@ -81,13 +86,13 @@ class FormValidator {
     const inputListIterator = (inputElement) => {
       const handleInput = (event) => {
         this._checkInputValidity(this._formElement, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState(inputList, buttonElement);
       };
       inputElement.addEventListener('input', handleInput);
     };
 
     inputList.forEach(inputListIterator);
-    //toggleButtonState(inputList, buttonElement);
+    this._toggleButtonState(inputList, buttonElement);
   }
 
   //validation enabling method
@@ -101,6 +106,7 @@ class FormValidator {
     formList.forEach((formElement) => {
       this._setEventListeners(formElement)
     });
+
   }
   //enableValidation(config)
 }
