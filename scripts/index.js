@@ -97,7 +97,7 @@ function submitAddForm(evt) {
   prependCard(newCard);
   closePopup(popupAddElement);
   addPlaceForm.reset();
-  //placeSubmitButton.blockSubmit();
+  //addElementValidator.blockSubmit(placeSubmitButton);
 };
 
 //event listeners//
