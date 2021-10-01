@@ -22,10 +22,9 @@ class FormValidator {
   //methods for hiding and showing error messages
   _showInputError = (inputElement) => {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
-    errorElement.textContent = inputElement.validationMessage;
+    errorElement.textContent = this._inputElement.validationMessage;
     errorElement.classList.add(this._config.errorClass);
     inputElement.classList.add(this._config.inputErrorClass);
-    console.log('hola');
   }
 
   _hideInputError = (inputElement) => {
@@ -33,40 +32,48 @@ class FormValidator {
     errorElement.textContent = '';
     errorElement.classList.remove(this._config.errorClass);
     inputElement.classList.remove(this._config.inputErrorClass);
-    console.log('hola');
   }
 
   //has at least one invalid element
-  _hasInvalidInput = (inputList) => {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput = () => {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
   //method for toggling button state
-  blockSubmit = () => {
+  /*blockSubmit = () => {
     this._buttonElement.disabled = true;
     this._buttonElement.classList.add(this._config.inactiveButtonClass);
-  }
+  }*/
 
   _toggleButtonState = () => {
-    if (this._hasInvalidInput(inputList)) {
-      blockSubmit(this._buttonElement);
+    if (this._hasInvalidInput()) {
+      this._buttonElement.disabled = true;
+      this._buttonElement.classList.add(this._config.inactiveButtonClass);
     } else {
       this._buttonElement.removeAttribute('disabled');
       this._buttonElement.classList.remove(this._config.inactiveButtonClass);
     }
   }
-  /*
-    _toggleButtonState () {
-      if (this._formElement.checkValidity()) {
-        this._buttonElement.classList.remove(this._config.inactiveButtonClass);
-        this._buttonElement.disabled = false;
-      } else {
-        this._buttonElement.classList.add(this._config.inactiveButtonClass);
-        this._buttonElement.disabled = true;
-      }
-    }*/
+
+  resetValidation() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement)
+    });
+
+    this._toggleButtonState();
+  }
+
+  /*_toggleButtonState () {
+    if (this._formElement.checkValidity()) {
+      this._buttonElement.classList.remove(this._config.inactiveButtonClass);
+      this._buttonElement.disabled = false;
+    } else {
+      this._buttonElement.classList.add(this._config.inactiveButtonClass);
+      this._buttonElement.disabled = true;
+    }
+  }*/
 
   //method for validity check
   _checkInputValidity = (inputElement) => {
@@ -80,8 +87,8 @@ class FormValidator {
 
   //event listeners setting method
   _setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-    const buttonElement = formElement.querySelector(config.submitButtonSelector);
+    this._inputList = Array.from(formElement.querySelectorAll(this._config.inputSelector));
+    this._buttonElement = formElement.querySelector(this._config.submitButtonSelector);
 
     const inputListIterator = (inputElement) => {
       const handleInput = (event) => {
@@ -91,8 +98,8 @@ class FormValidator {
       inputElement.addEventListener('input', handleInput);
     };
 
-    inputList.forEach(inputListIterator);
-    this._toggleButtonState(inputList, buttonElement)
+    this._inputList.forEach(inputListIterator);
+    this._toggleButtonState(this._inputList, this._buttonElement)
   }
 
   //validation enabling method

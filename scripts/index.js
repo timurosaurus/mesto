@@ -71,6 +71,8 @@ function submitForm(evt) {
   userName.textContent = nameInput.value;
   userBio.textContent = jobInput.value;
   closePopup(popupEditElement);
+  //editElementValidator.resetValidation();
+
 };
 //functions for adding and submiting cards//
 function addPlacePopupHandler() {
@@ -97,8 +99,9 @@ function submitAddForm(evt) {
   prependCard(newCard);
   closePopup(popupAddElement);
   addPlaceForm.reset();
-  //addElementValidator.blockSubmit(placeSubmitButton);
+  addElementValidator.resetValidation();
 };
+
 
 //event listeners//
 popupOpenAddButtonElement.addEventListener('click', addPlacePopupHandler);
