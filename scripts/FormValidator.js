@@ -22,7 +22,7 @@ class FormValidator {
   //methods for hiding and showing error messages
   _showInputError = (inputElement) => {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
-    errorElement.textContent = this._inputElement.validationMessage;
+    errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._config.errorClass);
     inputElement.classList.add(this._config.inputErrorClass);
   }
