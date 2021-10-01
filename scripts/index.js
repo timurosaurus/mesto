@@ -71,7 +71,7 @@ function submitForm(evt) {
   userName.textContent = nameInput.value;
   userBio.textContent = jobInput.value;
   closePopup(popupEditElement);
-  //editElementValidator.resetValidation();
+  editElementValidator.resetValidation();
 
 };
 //functions for adding and submiting cards//
